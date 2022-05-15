@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "655458727681",
+    "project_id": "game-database-df6c3",
+    "storage_bucket": "game-database-df6c3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655458727681:android:d367e3d450e05a73038d00",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.forest_game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655458727681-02e1h1ifth725o32k053pldbrli2en4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnynUMs65d3GrivJOr3zM9_LMhpZ60n1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655458727681-02e1h1ifth725o32k053pldbrli2en4b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
