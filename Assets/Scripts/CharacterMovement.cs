@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     Rigidbody rb;
-    public float speed = 0.2f;
+    public float speed = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +16,31 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("hey updated");
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 force = new Vector3(horizontal, 0, vertical);
-        rb.AddForce(force*speed);
+        //Debug.Log("hey updated");
+        //float horizontal = Input.GetAxis("Horizontal");
+        //float vertical = Input.GetAxis("Vertical");
+        //Vector3 force = new Vector3(horizontal, 0, vertical);
+        //rb.AddForce(force * speed);
         
+        //horizontal movement (x,z coordinates)
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(2 * Time.deltaTime, 0, 0);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(-2 * Time.deltaTime, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Translate( 0, 0, 2 * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            transform.Translate(0, 0, -2 * Time.deltaTime);
+        }
+
     }
 }
