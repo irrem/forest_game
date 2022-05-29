@@ -9,5 +9,7 @@ public class ExitButton : MonoBehaviour
     public void ExitFunction()
     {
         Application.Quit();
+        Debug.Log("Game is exiting");
+        //Just to make sure its working
     }
 }
