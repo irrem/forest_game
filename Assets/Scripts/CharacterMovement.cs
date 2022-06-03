@@ -23,21 +23,21 @@ public class CharacterMovement : MonoBehaviour
         //rb.AddForce(force * speed);
         
         //horizontal movement (x,z coordinates)
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(2 * Time.deltaTime, 0, 0);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(-2 * Time.deltaTime, 0, 0);
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate( 0, 0, 2 * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(0, 0, -2 * Time.deltaTime);
         }
