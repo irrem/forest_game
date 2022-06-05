@@ -15,7 +15,7 @@ public class AnimalManagement : MonoBehaviour
         
         if (isHungry)
         {
-            Debug.Log("hareket");
+           // Debug.Log("hareket");
             InvokeRepeating("animal_life", 0.0f, 2.0f);
         }
         //Invoke("animal_movement", 2.0f);
@@ -31,13 +31,13 @@ public class AnimalManagement : MonoBehaviour
         {
             Destroy(animal);
         }
-        Debug.Log("people is coming");
+        //Debug.Log("people is coming");
       
     }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(health);
+        //Debug.Log(health);
         animal_life();
     }
     void animal_life()
@@ -46,19 +46,19 @@ public class AnimalManagement : MonoBehaviour
         health -= 0.1f;
         if (health / 100 <= 0)
         {
-            Debug.Log("Its died!");
+           // Debug.Log("Its died!");
             health = 0;
         }
         healthBar.transform.localScale = new Vector3(health / 100, 1, 1);      
       
     }
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Player")
         {
-            Debug.Log(health);
+            // Debug.Log(health);
             health = 100;
         }
-        
     }
+    
 }
