@@ -43,4 +43,28 @@ public class CharacterMovement : MonoBehaviour
         }
 
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.name == "Animal")
+        {
+            Debug.Log("carpisma");
+
+        }
+        else if (collision.gameObject.name == "Obstacle")
+        {
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.gameObject.name);
+        if (other.gameObject.name == "Animal")
+        {
+            Debug.Log("carpisma");
+
+        }
+        else if (other.gameObject.name == "Obstacle")
+        {
+        }
+    }
 }
