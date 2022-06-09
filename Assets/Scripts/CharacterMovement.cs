@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.Globalization;
 
 public class CharacterMovement : MonoBehaviour
 {
     Rigidbody rb;
-    public float speed = 10f;
+    public float speed ;
+    public TextMeshProUGUI _scoreTxt;
+    public float levelScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,48 +27,63 @@ public class CharacterMovement : MonoBehaviour
         //rb.AddForce(force * speed);
         
         //horizontal movement (x,z coordinates)
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(2 * Time.deltaTime, 0, 0);
-        }
-
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Translate(-2 * Time.deltaTime, 0, 0);
+            transform.Translate(0, 0, speed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate( 0, 0, -speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.Translate( 0, 0, 2 * Time.deltaTime);
+            transform.Translate(speed * Time.deltaTime, 0, 0);
         }
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.Translate(0, 0, -2 * Time.deltaTime);
+            transform.Translate( -speed * Time.deltaTime,0, 0);
         }
 
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name == "Animal")
-        {
-            Debug.Log("carpisma");
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log(collision.gameObject.name);
+    //    if (collision.gameObject.name == "Animal")
+    //    {
+    //        Debug.Log("carpisma");
 
-        }
-        else if (collision.gameObject.name == "Obstacle")
-        {
-        }
-    }
-    private void OnTriggerEnter(Collider other)
+    //    }
+    //    else if (collision.gameObject.name == "Obstacle")
+    //    {
+    //    }
+    //}
+    private void OnCollisionEnter(Collision other)
     {
         Debug.Log(other.gameObject.name);
-        if (other.gameObject.name == "Animal")
+        if (other.gameObject.tag == "Animal")
         {
+            Debug.Log("carpisma");
+            _scoreTxt = GameObject.Find("Canvas/txtScore").GetComponent<TextMeshProUGUI>();
+            levelScore = float.Parse(_scoreTxt.text, CultureInfo.InvariantCulture.NumberFormat);
+            Debug.Log(levelScore);
+            _scoreTxt.text = levelScore.ToString();
             Debug.Log("carpisma");
 
         }
         else if (other.gameObject.name == "Obstacle")
         {
+            Debug.Log("carpisma");
+            _scoreTxt = GameObject.Find("Canvas/txtScore").GetComponent<TextMeshProUGUI>();
+            levelScore = float.Parse(_scoreTxt.text, CultureInfo.InvariantCulture.NumberFormat);
+            Debug.Log(levelScore);
+            _scoreTxt.text = levelScore.ToString();
+            Debug.Log("carpisma");
+        }
+        else
+        {
+            Debug.Log("what is this");
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+using TMPro;
+using System.Globalization;
 public class SimpleSampleCharacterControl : MonoBehaviour
 {
     private enum ControlMode
@@ -43,12 +45,18 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private List<Collider> m_collisions = new List<Collider>();
 
+    public TextMeshProUGUI _scoreTxt;
+    public float levelScore;
     private void Awake()
     {
         if (!m_animator) { gameObject.GetComponent<Animator>(); }
         if (!m_rigidBody) { gameObject.GetComponent<Animator>(); }
     }
-
+    private void Start()
+    {
+       
+    }
+    
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
@@ -64,8 +72,29 @@ public class SimpleSampleCharacterControl : MonoBehaviour
                 m_isGrounded = true;
             }
         }
-
+        _scoreTxt = GameObject.Find("Canvas/txtScore").GetComponent<TextMeshProUGUI>();
         
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.tag == "Animal")
+        {
+            Debug.Log("carpisma");
+            _scoreTxt = GameObject.Find("Canvas/txtScore").GetComponent<TextMeshProUGUI>();
+            levelScore = float.Parse(_scoreTxt.text, CultureInfo.InvariantCulture.NumberFormat);
+            levelScore += 5;
+            Debug.Log(levelScore);
+            _scoreTxt.text = levelScore.ToString();
+            Debug.Log("carpisma");
+
+        }
+        else if (collision.gameObject.name == "Obstacle")
+        {
+        }
+        else
+        {
+            Debug.Log("what is this");
+        }
+
+
     }
 
     private void OnCollisionStay(Collision collision)
@@ -113,6 +142,8 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             m_jumpInput = true;
         }
+        _scoreTxt.text = levelScore.ToString();
+        //Debug.LogError(levelScore);
     }
 
     private void FixedUpdate()

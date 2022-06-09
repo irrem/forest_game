@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rankings.unity
     guid: 1c1dc0d3337a9ac42ab6a44ef54736f7
+  - enabled: 1
+    path: Assets/Scenes/LevelSelection.unity
+    guid: 588cf9cc0b501144abce6e5f96c1395e
   m_configObjects: {}

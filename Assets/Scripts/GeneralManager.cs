@@ -1,4 +1,7 @@
 using UnityEngine;
+using TMPro;
+using System.Globalization;
+
 public class GeneralManager : MonoBehaviour
 {
     public GameObject people;
@@ -10,29 +13,32 @@ public class GeneralManager : MonoBehaviour
     public float levelScore;
     public float health;
       private Animator m_animator;
+    public TextMeshProUGUI _scoreTxt;
     // Start is called before the first frame update
     void Start()
     { 
-        levelScore = 0;
-        //InvokeRepeating("people_coming", 0.0f, 1.0f);
+        //levelScore = GameObject.Find("Canvas/txtScore").GetComponent<TextMeshProUGUI>().text);
+        ////InvokeRepeating("people_coming", 0.0f, 1.0f);
 
     }
     
     // Update is called once per frame
     void Update()
     {
-        
+        levelScore = float.Parse(_scoreTxt.text, CultureInfo.InvariantCulture.NumberFormat);
+        _scoreTxt = GameObject.Find("Canvas/txtScore").GetComponent<TextMeshProUGUI>();
         if (levelScore / 100 >= 1)
         {
             Debug.Log("Congragulations!");
         }
         else
         {
-            //levelScore += 0.1f;
+           // levelScore += 0.1f;
+            _scoreTxt.text = levelScore.ToString();
             levelBar.transform.localScale = new Vector3(levelScore / 100, 1, 1);
         }
 
-     
+   
         //if (is_people)
         //{
         //    Vector3 position = people.transform.position;

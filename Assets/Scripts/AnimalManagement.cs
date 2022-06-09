@@ -12,7 +12,6 @@ public class AnimalManagement : MonoBehaviour
     void Start()
     {
         health = 100;
-        
         if (isHungry)
         {
            // Debug.Log("hareket");
@@ -48,6 +47,21 @@ public class AnimalManagement : MonoBehaviour
         {
            // Debug.Log("Its died!");
             health = 0;
+
+            float rand = Random.Range(-5.0f, 2.0f);
+            //Instantiate(animal, new Vector3(-4, 1f, rand),Quaternion.identity);
+
+            //Vector3 position = animal.transform.position;
+            //Debug.Log("post"+position);
+            ////position.z += 0.05f;
+            ////if (position.z >= 5.0f)
+            ////{
+            ////    Destroy(animal);
+            //////}
+            //position.z = 5;
+            //position.x = 4;
+            animal.transform.position = new Vector3(rand, 1.47f, rand);
+            health = 100;
         }
         healthBar.transform.localScale = new Vector3(health / 100, 1, 1);      
       
